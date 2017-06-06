@@ -9,6 +9,7 @@ Usage
 ```python
 import argpar
 import copy
+import sys
 opts = {"o": None, "g": "foo", "w": None}
 flags = ["t", "u"]
 posarg = {"path": "/home"}
