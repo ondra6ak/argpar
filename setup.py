@@ -6,7 +6,7 @@ def readme():
         return f.read()
 
 setup(name="argpar",
-	  version=1,
+	  version="1.2.1",
 	  description="A simple arugments parser.",
 	  long_description=readme(),
 	  url="https://github.com/ondra6ak/argpar.git",

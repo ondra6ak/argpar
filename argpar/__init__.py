@@ -56,7 +56,7 @@ def posarg_get_od(args, defaultvalue):
 	except IndexError:
 		return defaultvalue, args
 
-def parse_args(opts, flags, posarg, args):
+def parse_args(opts, args, flags=[], posarg={}):
 	ret = {}
 	ret, args = opts_get_od(opts, args)
 	r, args = flags_get(flags, args)
@@ -67,19 +67,19 @@ def parse_args(opts, flags, posarg, args):
 		pass
 	return ret
 
-def help_get(opts, flags, posarg, args):
+def help_get(opts, args, flags, posarg):
 	if posarg:
 		posarg = list(posarg.keys())[0].upper()
 	else:
 		posarg = ""
 	return "Usage: {} -{}{} {}".format(args[0].split("/")[-1], list2str(opts.keys()), list2str(flags), posarg)
 
-def help_print(opts, flags, posarg, args):
-	print(help_get(opts, flags, posarg, args))
+def help_print(opts, args, flags, posarg):
+	print(help_get(opts, args, flags, posarg))
 	exit(0)
 
-def parse(opts, flags, posarg, args):
+def parse(opts, args, flags=[], posarg={}):
 	if flag_get("h", args)[0]:
-		help_print(opts, flags, posarg, args)
+		help_print(opts, args, flags, posarg)
 
-	return parse_args(opts, flags, posarg, args)
+	return parse_args(opts, args, flags, posarg)
